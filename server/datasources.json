@@ -1,0 +1,12 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "cloudant": {
+    "url": "https://d45c8b18-6258-4e35-ac32-9f6888c4c7e6-bluemix:ecf2747f74cd779934a034709d74355b3904287b601e4100a72f5da698c6d771@d45c8b18-6258-4e35-ac32-9f6888c4c7e6-bluemix.cloudant.com",
+    "database": "demon",
+    "name": "cloudant",
+    "connector": "cloudant"
+  }
+}
