@@ -1,0 +1,46 @@
+{
+  "name": "bank",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "branchName": {
+      "type": "string",
+      "required": true
+    },
+    "branchCode": {
+      "type": "number",
+      "required": true
+    },
+    "bankName": {
+      "type": "string",
+      "required": true
+    },
+    "branchAddress": {
+      "type": "string",
+      "required": false
+    },
+    "ifscCode": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tcexes": {
+      "type": "hasMany",
+      "model": "tcex",
+      "foreignKey": "bankId"
+    },
+    "tades": {
+      "type": "hasMany",
+      "model": "tade",
+      "foreignKey": "bankId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

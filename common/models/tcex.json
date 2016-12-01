@@ -1,0 +1,46 @@
+{
+  "name": "tcex",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cexDate": {
+      "type": "date",
+      "required": true
+    },
+    "cexName": {
+      "type": "string",
+      "required": true
+    },
+    "cex500": {
+      "type": "number",
+      "required": true
+    },
+    "cex1000": {
+      "type": "number",
+      "required": true
+    },
+    "totalCex": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "person": {
+      "type": "belongsTo",
+      "model": "person",
+      "foreignKey": "personId"
+    },
+    "bank": {
+      "type": "belongsTo",
+      "model": "bank",
+      "foreignKey": "bankId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

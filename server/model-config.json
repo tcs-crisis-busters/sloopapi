@@ -32,7 +32,25 @@
     "dataSource": "db",
     "public": false
   },
-  "deposit": {
+  "person": {
+    "dataSource": "cloudant",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "bank": {
+    "dataSource": "cloudant",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "tcex": {
+    "dataSource": "cloudant",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "tade": {
     "dataSource": "cloudant",
     "public": true,
     "$promise": {},

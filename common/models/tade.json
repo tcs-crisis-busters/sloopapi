@@ -1,0 +1,56 @@
+{
+  "name": "tade",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "adeName": {
+      "type": "string",
+      "required": true
+    },
+    "adeNumber": {
+      "type": "number",
+      "required": true,
+      "comments": "Bank Account Number"
+    },
+    "ade500": {
+      "type": "number",
+      "required": true
+    },
+    "adeAccType": {
+      "type": "string",
+      "required": false,
+      "comments": "Bank Account Type: savings/current/Jhand"
+    },
+    "ade1000": {
+      "type": "number",
+      "required": true
+    },
+    "totalAde": {
+      "type": "number",
+      "required": true
+    },
+    "adeDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "person": {
+      "type": "belongsTo",
+      "model": "person",
+      "foreignKey": "personId"
+    },
+    "bank": {
+      "type": "belongsTo",
+      "model": "bank",
+      "foreignKey": "bankId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

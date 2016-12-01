@@ -1,0 +1,54 @@
+{
+  "name": "person",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "panId": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "isItrFiled": {
+      "type": "boolean",
+      "required": true
+    },
+    "lastItrFiledBefore": {
+      "type": "number",
+      "required": true
+    },
+    "avgItrIncome": {
+      "type": "number",
+      "required": true
+    },
+    "aadhaarId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tcexes": {
+      "type": "hasMany",
+      "model": "tcex",
+      "foreignKey": "personId"
+    },
+    "tades": {
+      "type": "hasMany",
+      "model": "tade",
+      "foreignKey": "personId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
