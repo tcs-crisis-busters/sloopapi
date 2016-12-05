@@ -35,12 +35,41 @@ module.exports = function(Person) {
 		});
 	}
 
+	Person.getIndividualsCountByAmount = function(callback){
+
+		var response = [];
+		var cities = ['Bangalore', 'Chennai', 'Delhi', 'Mumbai', 'Pune'];
+		response.push({});
+		response[0].key = "Individual Count";
+		response[0].values = [];
+
+		cities.forEach(function(city, index){
+			if(response[0].values[index] === undefined) {
+				response[0].values[index] = {};
+				response[0].values[index].label = city;			
+				response[0].values[index].value = 0;	
+			}		
+			Person.getIndividuals(city.toUpperCase(), function(obj, transactions){
+				transactions.forEach(function(transaction){
+					if(parseInt(transaction.total) > 250000) {
+						console.log(index);
+						response[0].values[index].value += 1;
+					}
+				});
+			});
+		});
+				console.log(response);
+				callback(null, response);
+	};
+
 	Person.sumTotalCex = function(transactions){
 		
 		var sum = 0;
-		transactions.forEach(function(transaction){
-			sum += parseInt(transaction.totalCex);
-		});
+		if(transactions !== undefined) {
+			transactions.forEach(function(transaction){
+				sum += parseInt(transaction.totalCex);
+			});
+		}
 		return sum;
 	};
 
@@ -48,15 +77,23 @@ module.exports = function(Person) {
 	Person.sumTotalAde = function(transactions){
 		
 		var sum = 0;
-		transactions.forEach(function(transaction){
-			sum += parseInt(transaction.totalAde);
-		});
+		if(transactions !== undefined) {
+			transactions.forEach(function(transaction){
+				sum += parseInt(transaction.totalAde);
+			});
+		}
 		return sum;
 	};
 
 	Person.remoteMethod('getIndividuals', {
 		accepts: {arg: 'city', type: 'string'},	
 		http: {path: '/grid', verb: 'get'},
+		returns: {type: 'array', root: true}
+	});
+
+	
+	Person.remoteMethod('getIndividualsCountByAmount', {
+		http: {path: '/barChart', verb: 'get'},
 		returns: {type: 'array', root: true}
 	});
 };

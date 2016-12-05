@@ -4,17 +4,17 @@ module.exports = function(Bank) {
 
 	/*endpoint grid*/
 
-	Bank.getBanks = function(city, callback) {
+	Bank.getBanks = function(bankName, callback) {
 		
 		var response = [];
 		var options = { include: ['tcexes', 'tades'],
 				fields: { ifscCode: true, branchCode: true,
-					  bankName: true, branchName: true,
+					  'bankName': true, branchName: true,
 					  city: true
 					}
 			      };
-		if(city !== undefined) {
-			options.where = {'city': city };
+		if(bankName !== undefined) {
+			options.where = {'bankName': bankName };
 		}
 
 		Bank.find(options, function(err, transactions){
@@ -54,7 +54,7 @@ module.exports = function(Bank) {
 	};
 
 	Bank.remoteMethod('getBanks', {
-		accepts: {arg: 'city', type: 'string'},	
+		accepts: {arg: 'bankName', type: 'string'},	
 		http: {path: '/grid', verb: 'get'},
 		returns: {type: 'array', root: true}
 	});
