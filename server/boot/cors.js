@@ -5,7 +5,7 @@ module.exports = function(app){
 
 		var status = ctx.res.statusCode;
 		ctx.res.set('Nanz', 'I am missing you!');
-		ctx.res.set('Access-Control-Allow-Origin', 'https://sloopapi.mybluemix.net');
+		ctx.res.set('Access-Control-Allow-Origin', 'https://synopsis.mybluemix.net');
 		ctx.res.status(status);
 		next();
 	};
